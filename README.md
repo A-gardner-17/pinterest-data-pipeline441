@@ -98,6 +98,6 @@ df = spark.read.format("json").load(partition_path + "*.json")
 
 The data was then saved directly as a Delta table in Databricks (example below).
 
-![Databricks1.png]
+![Delta table](Databricks1.png)
 
 The completed code for this task can be found in **milestone5.py**
