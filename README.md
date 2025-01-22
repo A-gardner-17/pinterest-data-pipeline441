@@ -101,3 +101,7 @@ The data was then saved directly as a Delta table in Databricks (example below).
 ![Delta table](Databricks1.png)
 
 The completed code for this task can be found in **milestone5.py**
+
+A screenshot of the code in Databricks can be seen below:
+
+![S3 Bucket to Databricks](SaveDataBricks.png)
