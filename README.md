@@ -10,7 +10,8 @@ Pinterest crunches billions of data points every day to decide how to provide mo
  6. [File Structure of the Project - Milestone 3](#file-structure-of-the-project-milestone-3)
  7. [File Structure of the Project - Milestone 4](#file-structure-of-the-project-milestone-4)
  8. [File Structure of the Project - Milestone 5](#file-structure-of-the-project-milestone-5)
- 9. [License Information](#license-information)
+ 9. [File Structure of the Project - Milestone 6](#file-structure-of-the-project-milestone-6)
+ 10. [License Information](#license-information)
 
 # Project Description
 Include details of the project here..
@@ -105,3 +106,8 @@ The completed code for this task can be found in **milestone5.py**
 A screenshot of the code in Databricks can be seen below:
 
 ![S3 Bucket to Databricks](SaveDataBricks.png)
+
+# Project Milestone 6
+
+The evidence for cleaning of the data is found [here](Milestone_6_Cleaning.html)
+The evidence for querying the data is found [here](Milestone_6_Query_Data.html)

@@ -47,7 +47,7 @@ def postKafka(topic, data):
         # Custom JSON serializer to handle datetime objects
         def json_serializer(obj):
             if isinstance(obj, datetime):
-                return obj.isoformat()  # Convert to ISO 8601 format
+                return obj.isoformat() # Convert to ISO 8601 format
             raise TypeError(f"Type {type(obj)} not serializable")
         
         payload = {
