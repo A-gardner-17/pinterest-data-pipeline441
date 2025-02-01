@@ -109,5 +109,7 @@ A screenshot of the code in Databricks can be seen below:
 
 # Project Milestone 6
 
-The evidence for cleaning of the data is found [here](/Mileston6/Milestone_6_Cleaning.html)
-The evidence for querying the data is found [here](/Milestone6/Milestone_6_Query_Data.html)
+The evidence for cleaning of the data is found [here](/Milestone6/Milestone_6_Cleaning.ipynb)  
+The evidence for querying the data is found [here](/Milestone6/Milestone_6_Query_Data.ipynb)  
+
+NEED TO ADD COMMENTARY HERE
