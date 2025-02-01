@@ -5,12 +5,12 @@ Pinterest crunches billions of data points every day to decide how to provide mo
  1. [Project Description](#project-description)
  2. [Installation Instructions](#installation-instructions)
  3. [Usage Instructions](#usage-instructions)
- 4. [File Structure of the Project - Milestone 1](#file-structure-of-the-project-milestone-1)
- 5. [File Structure of the Project - Milestone 2](#file-structure-of-the-project-milestone-2)
- 6. [File Structure of the Project - Milestone 3](#file-structure-of-the-project-milestone-3)
- 7. [File Structure of the Project - Milestone 4](#file-structure-of-the-project-milestone-4)
- 8. [File Structure of the Project - Milestone 5](#file-structure-of-the-project-milestone-5)
- 9. [File Structure of the Project - Milestone 6](#file-structure-of-the-project-milestone-6)
+ 4. [Project - Milestone 1](#project-milestone-1)
+ 5. [Project - Milestone 2](#project-milestone-2)
+ 6. [Project - Milestone 3](#project-milestone-3)
+ 7. [Project - Milestone 4](#project-milestone-4)
+ 8. [Project - Milestone 5](#project-milestone-5)
+ 9. [Project - Milestone 6](#project-milestone-6)
  10. [License Information](#license-information)
 
 # Project Description
