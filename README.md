@@ -126,4 +126,4 @@ The file is accessible [here](57e94de2a910_dag.py).
 
 The dag was tested using the Airflow UI, evidence of which can be seen in the screenshot below. The failed runs were due to an incorrect notebook path.
 
-![Working Airflow](Airflow_working.png)
+![Working Airflow](Airflow_Working.png)
