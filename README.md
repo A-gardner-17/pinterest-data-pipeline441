@@ -11,7 +11,8 @@ Pinterest crunches billions of data points every day to decide how to provide mo
  7. [Project - Milestone 4](#project-milestone-4)
  8. [Project - Milestone 5](#project-milestone-5)
  9. [Project - Milestone 6](#project-milestone-6)
- 10. [License Information](#license-information)
+ 10. [Project - Milestone 7](#project-milestone-7)
+ 11. [License Information](#license-information)
 
 # Project Description
 Include details of the project here..
@@ -113,3 +114,16 @@ The evidence for cleaning of the data is found [here](/Milestone6/Milestone_6_Cl
 The evidence for querying the data is found [here](/Milestone6/Milestone_6_Query_Data.ipynb)  
 
 NEED TO ADD COMMENTARY HERE
+
+# Project Milestone 7
+
+For this milestone I created an Airflow DAG that triggered a Databricks Notebook to be run on a specific schedule. This DAG was uploaded to the dags folder in the mwaa-dags-bucket.
+
+
+The file 57e94de2a910_dag.py was uploaded and scheduled to run daily using the following format schedule_interval='0 6 * * * '.
+
+The file is accessible [here](57e94de2a910_dag.py).
+
+The dag was tested using the Airflow UI, evidence of which can be seen in the screenshot below. The failed runs were due to an incorrect notebook path.
+
+![Working Airflow](Airflow_working.png)
