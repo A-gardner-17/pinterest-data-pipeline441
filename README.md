@@ -12,7 +12,8 @@ Pinterest crunches billions of data points every day to decide how to provide mo
  8. [Project - Milestone 5](#project-milestone-5)
  9. [Project - Milestone 6](#project-milestone-6)
  10. [Project - Milestone 7](#project-milestone-7)
- 11. [License Information](#license-information)
+ 11. [Project - Milestone 8](#project-milestone-8)
+ 12. [License Information](#license-information)
 
 # Project Description
 Include details of the project here..
@@ -127,3 +128,5 @@ The file is accessible [here](57e94de2a910_dag.py).
 The dag was tested using the Airflow UI, evidence of which can be seen in the screenshot below. The failed runs were due to an incorrect notebook path.
 
 ![Working Airflow](Airflow_Working.png)
+
+# Project Milestone 8
