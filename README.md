@@ -24,6 +24,8 @@ Pinterest crunches billions of data points every day to decide how to provide mo
 **DataBricks** - for reading batch data from S3 and streaming data from Kinesis; cleaning and saving data  
 **AWS Kinesis** - fully managed service for real-time data streaming and processing at scale, enabling applications to ingest, process, and analyze streaming data  
 
+![Pinterest Pipeline](/Images/CloudPinterestPipeline.png)
+
 # Installation Instructions
 The project uses the standard Python installation.
 
