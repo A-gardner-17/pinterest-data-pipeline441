@@ -141,7 +141,7 @@ The Kinesis Data Stream was called Kinesis-Prod-Stream.
 
 I then updated the API setup as part of Milestone 4. The final API setup can be seen below:  
 
-[Final API](/Images/Final_API_Kinesis.png)  
+![Final API](/Images/Final_API_Kinesis.png)  
 
 The errors encountered included the following:
 1. API had incorrect region (sa-east-1) - incorrect selection on setup
@@ -155,13 +155,13 @@ I also needed to change the requests statement to requests.put (this was origina
 
 Once the changes above were made I used the following statement - print("Raw API Response:", response.text) - to check that the data was being posted.The successful evidence of this can be seen below:  
 
-[ShardID](/Images/ShardID_success.png)
+![ShardID](/Images/ShardID_success.png)
 
 I was then able to see the data being posted on Kinesis:
 
-[Data Stream](/Images/Data_Records.png)
+![Data Stream](/Images/Data_Records.png)
 
-[Put Record](/Images/Put_Record.png)
+![Put Record](/Images/Put_Record.png)
 
 Once the data was successfully being posted I read the data into DataBricks using the provided authetication credentials.
 
@@ -174,8 +174,8 @@ Evidence for the final part of the process can be found here [Data Bricks2](/Mil
 This notbook combines reading the streaming data into DataBricks, cleaning the data and saving to individual delta tables.  
 
 Evidence for each table can be seen below:  
-[geo table](/Images/Geo_Streaming_data.png)
+![geo table](/Images/Geo_Streaming_data.png)
 
-[pin table](/Images/Pin_Streaming_data.png)
+![pin table](/Images/Pin_Streaming_data.png)
 
-[user table](/Images/User_Streaming_data.png)
+![user table](/Images/User_Streaming_data.png)
