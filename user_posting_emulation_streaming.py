@@ -59,7 +59,7 @@ def postKafka(topic, data):
         # Serialize payload with custom serializer
         serialized_payload = json.dumps(payload, default=json_serializer)
 
-        response = requests.post(f"{API_URL}/{topic}", headers=HEADERS, data=serialized_payload)
+        response = requests.post(f"{API_URL}/{topic}", headers=HEADERS, data=serialized_payload) # instead pf serialized_payload
         if response.status_code == 200:
             print(f"Successfully posted to topic {topic}: {data}")
         else:
@@ -69,7 +69,7 @@ def postKafka(topic, data):
 
 
 def postKinesis(data, stream, partition_key):
-    invoke_url = f"https://5ca8e1ic9e.execute-api.us-east-1.amazonaws.com/Dev/streams/PutRecord"
+    invoke_url = f"https://5ca8e1ic9e.execute-api.us-east-1.amazonaws.com/Dev/streams/{stream}/record" # Need stream name here and record
     try:
         def json_serializer(obj):
             if isinstance(obj, datetime):
@@ -78,20 +78,25 @@ def postKinesis(data, stream, partition_key):
         
         payload = {
             "StreamName": "Kinesis-Prod-Stream",
-            "Data": json.dumps(data, default=json_serializer),
+            "Data": data,
             "PartitionKey": partition_key
         }
 
         headers = {'Content-Type': 'application/json'}
 
-        response = requests.post(invoke_url, headers=headers, data=json.dumps(payload))
+        response = requests.put(invoke_url, headers=headers, data=json.dumps(payload, default=json_serializer)) # requests.put
+        
+        # Check shard and sequence number
+        print("Raw API Response:", response.text)
+        
         if response.status_code == 200:
             print(f"Successfully posted to Kinesis with PartitionKey {partition_key}: {data}")
+            response_json = response.json()
         else:
             print(f"Failed to post to Kinesis: {response.status_code}, {response.text}")
     except Exception as e:
         print(f"Error posting to Kinesis: {e}")
-
+    
 def run_infinite_post_data_loop():
     #count = 0
     while True:

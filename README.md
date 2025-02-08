@@ -16,7 +16,14 @@ Pinterest crunches billions of data points every day to decide how to provide mo
  12. [License Information](#license-information)
 
 # Project Description
-Include details of the project here..
+Pinterest crunches billions of data points every day to decide how to provide more value to their users. In this project, I have created a similar system using the AWS Cloud.
+
+Tools Used:
+Amazon EC2 - cloud computing service that provides resizable and scalable virtual servers (instances) in the AWS cloud. 
+Apache Kafka - distributed event streaming platform designed for handling real-time data feeds. 
+API Gateway - API linked to Apache Kafka
+DataBricks - for reading batch data from S3 and streaming data from Kinesis; cleaning and saving data
+AWS Kinesis - fully managed service for real-time data streaming and processing at scale, enabling applications to ingest, process, and analyze streaming data
 
 # Installation Instructions
 The project uses the standard Python installation.
@@ -101,20 +108,18 @@ df = spark.read.format("json").load(partition_path + "*.json")
 
 The data was then saved directly as a Delta table in Databricks (example below).
 
-![Delta table](Databricks1.png)
+![Delta table](/Images/Databricks1.png)
 
 The completed code for this task can be found in **milestone5.py**
 
 A screenshot of the code in Databricks can be seen below:
 
-![S3 Bucket to Databricks](SaveDataBricks.png)
+![S3 Bucket to Databricks](/Images/SaveDataBricks.png)
 
 # Project Milestone 6
 
 The evidence for cleaning of the data is found [here](/Milestone6/Milestone_6_Cleaning.ipynb)  
 The evidence for querying the data is found [here](/Milestone6/Milestone_6_Query_Data.ipynb)  
-
-NEED TO ADD COMMENTARY HERE
 
 # Project Milestone 7
 
@@ -127,6 +132,50 @@ The file is accessible [here](57e94de2a910_dag.py).
 
 The dag was tested using the Airflow UI, evidence of which can be seen in the screenshot below. The failed runs were due to an incorrect notebook path.
 
-![Working Airflow](Airflow_Working.png)
+![Working Airflow](/Images/Airflow_Working.png)
 
 # Project Milestone 8
+
+This was the most challenge part of the project and I encountered a number of issues during the various stages.  
+The Kinesis Data Stream was called Kinesis-Prod-Stream.
+
+I then updated the API setup as part of Milestone 4. The final API setup can be seen below:  
+
+[Final API](/Images/Final_API_Kinesis.png)  
+
+The errors encountered included the following:
+1. API had incorrect region (sa-east-1) - incorrect selection on setup
+2. PUT for record and records.
+
+The script [here](user_posting_emulation_streaming.py) build upon the initial script used in posting to Kafka.  
+
+On testing of the original script that errors with the API were identified and there was also a problem with the endpoint URL.
+This should have been in the following format: https://<invoke url>/Dev/streams/{stream}/record but in my initial setup the end point included /PutRecord.
+I also needed to change the requests statement to requests.put (this was originally setup incorrectly to get).
+
+Once the changes above were made I used the following statement - print("Raw API Response:", response.text) - to check that the data was being posted.The successful evidence of this can be seen below:  
+
+[ShardID](/Images/ShardID_success.png)
+
+I was then able to see the data being posted on Kinesis:
+
+[Data Stream](/Images/Data_Records.png)
+
+[Put Record](/Images/Put_Record.png)
+
+Once the data was successfully being posted I read the data into DataBricks using the provided authetication credentials.
+
+The notebook for this processing can be found here [Data Bricks](/Milestone8/Milestone_8_Read.ipynb)
+
+I was able to read in the data, decode and save to individual delta tables.
+
+Evidence for the final part of the process can be found here [Data Bricks2](/Milestone8/Milestone_8_Read_Transform_Write.ipynb)  
+
+This notbook combines reading the streaming data into DataBricks, cleaning the data and saving to individual delta tables.  
+
+Evidence for each table can be seen below:  
+[geo table](/Images/Geo_Streaming_data.png)
+
+[pin table](/Images/Pin_Streaming_data.png)
+
+[user table](/Images/User_Streaming_data.png)
