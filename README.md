@@ -16,7 +16,6 @@ Pinterest crunches billions of data points every day to decide how to provide mo
  12. [License Information](#license-information)
 
 # Project Description
-Pinterest crunches billions of data points every day to decide how to provide more value to their users. In this project, I have created a similar system using the AWS Cloud.
 
 **Tools Used:**  
 **Amazon EC2** - cloud computing service that provides resizable and scalable virtual servers (instances) in the AWS cloud.   
