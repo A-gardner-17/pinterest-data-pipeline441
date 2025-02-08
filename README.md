@@ -4,16 +4,15 @@ Pinterest crunches billions of data points every day to decide how to provide mo
 # Table of Contents
  1. [Project Description](#project-description)
  2. [Installation Instructions](#installation-instructions)
- 3. [Usage Instructions](#usage-instructions)
- 4. [Project - Milestone 1](#project-milestone-1)
- 5. [Project - Milestone 2](#project-milestone-2)
- 6. [Project - Milestone 3](#project-milestone-3)
- 7. [Project - Milestone 4](#project-milestone-4)
- 8. [Project - Milestone 5](#project-milestone-5)
- 9. [Project - Milestone 6](#project-milestone-6)
- 10. [Project - Milestone 7](#project-milestone-7)
- 11. [Project - Milestone 8](#project-milestone-8)
- 12. [License Information](#license-information)
+ 3. [Project - Milestone 1](#project-milestone-1)
+ 4. [Project - Milestone 2](#project-milestone-2)
+ 5. [Project - Milestone 3](#project-milestone-3)
+ 6. [Project - Milestone 4](#project-milestone-4)
+ 7. [Project - Milestone 5](#project-milestone-5)
+ 8. [Project - Milestone 6](#project-milestone-6)
+ 9. [Project - Milestone 7](#project-milestone-7)
+ 10. [Project - Milestone 8](#project-milestone-8)
+ 11. [License Information](#license-information)
 
 # Project Description
 
@@ -28,9 +27,6 @@ Pinterest crunches billions of data points every day to decide how to provide mo
 
 # Installation Instructions
 The project uses the standard Python installation.
-
-# Usage Instructions
-The project can be tested using the main.py
 
 # Project Milestone 1
 As part of this project I set up a GitHub repo and created an AWS cloud account. 
