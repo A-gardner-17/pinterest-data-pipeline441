@@ -54,6 +54,7 @@ After starting the EC2 instance I connected to this instance from VSCode using t
 3. UserId.user for the post user data
 
 # Project Milestone 4
+[Milestone 4](user_posting_emulation_m4.py)
 The API was already created for this project so the first step was to find the API and then create a build a PROXY integration. The resource was created followed by an HTTP ANY method using the PublicDNS of the EC2 machine as the Endpoint URL.
 This Endpoint URL was in the following format: http://<ec2 instance PublicDNS>:8082/{proxy}.
 
@@ -109,7 +110,7 @@ The data was then saved directly as a Delta table in Databricks (example below).
 
 ![Delta table](/Images/Databricks1.png)
 
-The completed code for this task can be found in **milestone5.py**
+The completed code for this task can be found in **milestone5.py** [Milestone 5](milestone5.py)
 
 A screenshot of the code in Databricks can be seen below:
 
