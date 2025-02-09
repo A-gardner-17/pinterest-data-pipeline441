@@ -25,17 +25,42 @@ TOPICS = {
 class AWSDBConnector:
 
     def __init__(self,filename):
+        """
+        Initialises an instance of the class, setting up database connection properties.
 
+        Args:
+            fileName (str): The name of the file containing database credentials.
+
+        Attributes:
+            fileName (str): Stores the provided file name for database credential lookup.
+            credentials (dict): The database credentials read from the specified file.
+            engine (sqlalchemy.engine.base.Engine): The database engine initialised using the credentials.
+        """
         self.fileName = filename
         self.credentials = self.read_db_creds()
         self.engine = self.create_db_connector()
 
     def read_db_creds(self):
+        """
+        
+        Method reads database credentials from a YAML file,
+        and returns the credentials as a dictionary.
+
+        Returns:
+            credentials (dict): A dictionary containing the database credentials.
+
+        """
         with open(self.fileName, "r") as file:
             credentials = yaml.safe_load(file)
         return credentials
 
     def create_db_connector(self):
+        """
+        Method Initialises and returns a SQLAlchemy database engine.
+
+        Returns:
+            sqlalchemy.engine.base.Engine: A SQLAlchemy engine instance for database operations.
+        """ 
         engine = sqlalchemy.create_engine(f"mysql+pymysql://{self.credentials['RDS_USER']}:{self.credentials['RDS_PASSWORD']}@{self.credentials['RDS_HOST']}:{self.credentials['RDS_PORT']}/{self.credentials['RDS_DATABASE']}?charset=utf8mb4")
         return engine
 
@@ -43,6 +68,13 @@ class AWSDBConnector:
 new_connector = AWSDBConnector('db_creds.yaml')
 
 def postKafka(topic, data):
+    """
+        Procedure to send data to Kafka Topics
+        
+        Args:
+            topic (str): Topic to post.
+            data: Data to post
+    """ 
     try:
         # Custom JSON serializer to handle datetime objects
         def json_serializer(obj):
@@ -69,6 +101,14 @@ def postKafka(topic, data):
 
 
 def postKinesis(data, stream, partition_key):
+    """
+        Procedure to send streaming data to Kinesis to Kafka Topics
+        
+        Args:
+            data: Data to post
+            stream (str): name of stream on Kinesis
+            partition_key: identifies which table the payload belongs to
+    """ 
     invoke_url = f"https://5ca8e1ic9e.execute-api.us-east-1.amazonaws.com/Dev/streams/{stream}/record" # Need stream name here and record
     try:
         def json_serializer(obj):
@@ -98,6 +138,10 @@ def postKinesis(data, stream, partition_key):
         print(f"Error posting to Kinesis: {e}")
     
 def run_infinite_post_data_loop():
+    """
+        Procedure to connect to RDS database and read pin, geo and user data.
+        Calls postKinesis procedure to post the streaming data
+    """
     #count = 0
     while True:
         sleep(random.randrange(0, 2))

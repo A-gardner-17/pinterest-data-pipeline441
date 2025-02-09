@@ -25,17 +25,43 @@ TOPICS = {
 class AWSDBConnector:
 
     def __init__(self,filename):
+        """
+        Initialises an instance of the class, setting up database connection properties.
 
+        Args:
+            fileName (str): The name of the file containing database credentials.
+
+        Attributes:
+            fileName (str): Stores the provided file name for database credential lookup.
+            credentials (dict): The database credentials read from the specified file.
+            engine (sqlalchemy.engine.base.Engine): The database engine initialised using the credentials.
+        """
         self.fileName = filename
         self.credentials = self.read_db_creds()
         self.engine = self.create_db_connector()
 
     def read_db_creds(self):
+        """
+        
+        Method reads database credentials from a YAML file,
+        and returns the credentials as a dictionary.
+
+        Returns:
+            credentials (dict): A dictionary containing the database credentials.
+
+        """
         with open(self.fileName, "r") as file:
             credentials = yaml.safe_load(file)
         return credentials
 
     def create_db_connector(self):
+        """
+        Method Initialises and returns a SQLAlchemy database engine.
+
+        Returns:
+            sqlalchemy.engine.base.Engine: A SQLAlchemy engine instance for database operations.
+        """ 
+
         engine = sqlalchemy.create_engine(f"mysql+pymysql://{self.credentials['RDS_USER']}:{self.credentials['RDS_PASSWORD']}@{self.credentials['RDS_HOST']}:{self.credentials['RDS_PORT']}/{self.credentials['RDS_DATABASE']}?charset=utf8mb4")
         return engine
 
@@ -43,6 +69,13 @@ class AWSDBConnector:
 new_connector = AWSDBConnector('db_creds.yaml')
 
 def postKafka(topic, data):
+    """
+        Procedure to send data to Kafka Topics
+        
+        Args:
+            topic (str): Topic to post.
+            data: Data to post
+    """ 
     try:
         # Custom JSON serializer to handle datetime objects
         def json_serializer(obj):
@@ -69,6 +102,13 @@ def postKafka(topic, data):
 
 
 def run_infinite_post_data_loop(limit):
+    """
+        Procedure to connect to RDS database and read pin, geo and user data.
+        Calls postkafka procedure to post the data
+        
+        Args:
+            limit (int): Number of loops for testing
+    """
     count = 0
     while count < limit:
         sleep(random.randrange(0, 2))

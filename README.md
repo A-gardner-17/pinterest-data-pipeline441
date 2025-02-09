@@ -151,7 +151,7 @@ On testing of the original script that errors with the API were identified and t
 This should have been in the following format: https://<invoke url>/Dev/streams/{stream}/record but in my initial setup the end point included /PutRecord.
 I also needed to change the requests statement to requests.put (this was originally setup incorrectly to get).
 
-Once the changes above were made I used the following statement - print("Raw API Response:", response.text) - to check that the data was being posted.The successful evidence of this can be seen below:  
+Once the changes above were made the following statement was used - print("Raw API Response:", response.text) - to check that the data was being posted.The successful evidence of this can be seen below:  
 
 ![ShardID](/Images/ShardID_success.png)
 
@@ -161,13 +161,13 @@ I was then able to see the data being posted on Kinesis:
 
 ![Put Record](/Images/Put_Record.png)
 
-Once the data was successfully being posted I read the data into DataBricks using the provided authetication credentials.
+Once the data was successfully being posted I read the data into DataBricks using the provided authentication credentials.
 
-The notebook for this processing can be found here [Data Bricks](/Milestone8/Milestone_8_Read.ipynb)
+The notebook for this processing can be found here [Data Bricks Processing](/Milestone8/Milestone_8_Read.ipynb)
 
 I was able to read in the data, decode and save to individual delta tables.
 
-Evidence for the final part of the process can be found here [Data Bricks2](/Milestone8/Milestone_8_Read_Transform_Write.ipynb)  
+Evidence for the final part of the process can be found here [Data Bricks Read Clean and Save](/Milestone8/Milestone_8_Read_Transform_Write.ipynb)  
 
 This notbook combines reading the streaming data into DataBricks, cleaning the data and saving to individual delta tables.  
 

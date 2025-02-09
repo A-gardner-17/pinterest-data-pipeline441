@@ -1,4 +1,13 @@
 def readS3(topics):
+    """
+    Method that will read in data from database into a Pandas DataFrame  
+
+    Args:
+        topics: list of topics to be read.
+
+    Returns:
+        
+    """
     for item in topics:
         # Define S3 partition path
         partition_path = f"s3a://user-57e94de2a910-bucket/topics/57e94de2a910{item}/partition=0/"
