@@ -11,14 +11,6 @@ import yaml
 
 random.seed(100)
 
-# Define the API Invoke URL and Kafka topics
-# API_URL = "https://<api-id>.execute-api.<region>.amazonaws.com/<stage>/produce"
-# HEADERS = {"Content-Type": "application/json"}
-#TOPICS = {
-#    "pinterest_data": "pinterest_topic",
-#    "geolocation_data": "geolocation_topic",
-#    "user_data": "user_topic",
-#}
 
 class AWSDBConnector:
 

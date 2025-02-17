@@ -32,7 +32,7 @@ The project uses the standard Python installation.
 As part of this project I set up a GitHub repo and created an AWS cloud account. 
 
 # Project Milestone 2
-I was provided with a python file containing that contained login details for an RDS database. The database contained three tables containing data resembling data received by the Pinterest API when a POST request was made. 
+I was provided with a python file that contained login details for an RDS database. The database contained three tables containing data resembling data received by the Pinterest API when a POST request was made. 
 
 I moved the login details for the database into a separate db_creds.yaml file and added this file to my .gitignore file so that the details were not uploaded to the github repo. I modify the python script to access the yaml file details and output the following data:
 1. pinterest_data contains data about posts being updated to Pinterest
@@ -41,7 +41,7 @@ I moved the login details for the database into a separate db_creds.yaml file an
 
 I saved copies of data from each table to examine the data stored.
 
-I then signed into the AWS account using the provided credentials, update the password and a made a note of the UserId. In all aspects of the project I will be working in the us-east-1 region so will need to set this region when create new services.
+I then signed into the AWS account using the provided credentials, updated the password and a made a note of the UserId. In all aspects of the project I will be working in the us-east-1 region so will need to set this region when creating new services.
 
 # Project Milestone 3
 Using the Parameter Store in the AWS account I found the Key Pair value and stored it in the file Key pair name.pem, locally. This file was also added to the .gitignore file.
@@ -79,14 +79,14 @@ TOPICS = {
 The first time this program was an error was returned in the following format:
 
 Error posting to Kafka topic <username>.geo: Object of type datetime is not JSON serializable.
-This indicated that the data being fetched from the database contained datetime objects, which are not JSON-serializable by default. After researching the error it was clear that the datetime objects needed to be converted to ISO 8601 strings. This was achieved with the follwoing function:
-
+This indicated that the data being fetched from the database contained datetime objects, which are not JSON-serializable by default. After researching the error it was clear that the datetime objects needed to be converted to ISO 8601 strings. This was achieved with the following function:
+```
 def json_serializer(obj):  
     if isinstance(obj, datetime):  
         return obj.isoformat()  # Convert to ISO 8601 format  
     raise TypeError(f"Type {type(obj)} not serializable")  
-
-Once the serializer had been added the program was run again and the data was sent to the EC2 and could be send in the S3 bucket. The data was stored using the following structure: topics/<username>.<topic name>/partition=0/
+```
+Once the serializer had been added the program was run again and the data was sent to the EC2 and could be seen in the S3 bucket. The data was stored using the following structure: topics/<username>.<topic name>/partition=0/
 
 **Issues**
 The main issue was being able to connect to the Endpoint URL as the first time I set this up I used https instead of http. Having finally realised that this should be http I managed to test the connection using:
@@ -96,14 +96,14 @@ curl https://<inoke URL>/Dev/topics/<username>.pin
 Batch Processing: Databricks. 
 The first task in this milestone was to setup the Databricks account with the provided details.
 
-The data was then read in from the S3 bucket - when reading in the JSONs from S3, I needed make sure to include the complete path to the JSON objects, as seen in the S3 bucket (e.g topics/<your_UserId>.pin/partition=0/). The path was included in the following format:
+The data was then read in from the S3 bucket - when reading in the JSONs from S3, I needed to make sure to include the complete path to the JSON objects, as seen in the S3 bucket (e.g topics/<your_UserId>.pin/partition=0/). The path was included in the following format:
 
 s3a://user-<username>-bucket/topics/<username>{item}/partition=0/  
 
 All the data files in the partition were then read into the dataframe:
-
+```
 df = spark.read.format("json").load(partition_path + "*.json")  
-
+```
 The data was then saved directly as a Delta table in Databricks (example below).
 
 ![Delta table](/Images/Databricks1.png)
@@ -169,7 +169,7 @@ I was able to read in the data, decode and save to individual delta tables.
 
 Evidence for the final part of the process can be found here [Data Bricks Read Clean and Save](/Milestone8/Milestone_8_Read_Transform_Write.ipynb)  
 
-This notbook combines reading the streaming data into DataBricks, cleaning the data and saving to individual delta tables.  
+This notebook combines reading the streaming data into DataBricks, cleaning the data and saving to individual delta tables.  
 
 Evidence for each table can be seen below:  
 ![geo table](/Images/Geo_Streaming_data.png)
