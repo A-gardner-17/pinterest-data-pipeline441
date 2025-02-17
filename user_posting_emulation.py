@@ -1,11 +1,12 @@
-import requests
 from time import sleep
-import random
+from sqlalchemy import text
 from multiprocessing import Process
+import random
+
+import requests
 import boto3
 import json
 import sqlalchemy
-from sqlalchemy import text
 import yaml
 
 
